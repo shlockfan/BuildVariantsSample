@@ -1,7 +1,7 @@
 # BuildVariantsSample
 ###使用BuildVariants构建测试版本与正式版本
 ####在APP开发过程中一般至少会存在两个环境，正式环境和测试环境，随着后期版本的迭代，经常需要在两个环境中来回切换。如果手动在这两个环境中来回切换，可能我们需要更改，百度或友盟的key，更改接口请求的地址，端口等等。。。可能由于哪个地方没改到造成线上版本的名称或是统计定位出现问题，使用BuildVariants则可以避免这个问题，在打包发布时也更加方便。
-1.设置productFlavors，构建两个差异版本，appfortest（测试版本），appforrelease（发布版本）
+#####1.设置productFlavors，构建两个差异版本，appfortest（测试版本），appforrelease（发布版本）
 ```
 productFlavors {
         appfortest {
@@ -14,7 +14,7 @@ productFlavors {
     }
 ```
 
-2.动态修改meta标签里的value值
+#####2.动态修改meta标签里的value值
 在manifest里面新建一个测试标签,value值需要用${ }的方式表示，以便可以动态设置value的值
 ```
   <meta-data
@@ -36,7 +36,7 @@ productFlavors {
     }
 ```
 
-3.动态修改接口请求的IP和端口,添加buildConfigField API_EVN
+#####3.动态修改接口请求的IP和端口,添加buildConfigField API_EVN
 ```
  productFlavors {
 
@@ -68,7 +68,7 @@ productFlavors {
         }
     }
 ```
-最后测试meta标签和其它配置在不同版本打包时是否生效
+#####最后测试meta标签和其它配置在不同版本打包时是否生效
 ```
   try {
                     ApplicationInfo appInfo = this.getPackageManager()
@@ -80,4 +80,4 @@ productFlavors {
                     e.printStackTrace();
                 }
 ```
-OK
+#####OK
