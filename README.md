@@ -1,0 +1,2 @@
+# BuildVariantsSample
+使用BuildVariants构建测试版本与正式版本
