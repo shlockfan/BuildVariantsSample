@@ -21,8 +21,6 @@ public class Constant {
                 APP_HOST = "www.release.com";
                 APP_PORT = ":80";
                 break;
-
-
         }
     }
 

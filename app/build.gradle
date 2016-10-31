@@ -10,7 +10,6 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        buildConfigField "String" ,"API_EVN", "\"APITEST\""
 
     }
     buildTypes {
@@ -30,6 +29,15 @@ android {
         appforrelease{
             manifestPlaceholders=[TEST_KEY_VALUE:"appforrelease"]
             buildConfigField "String" ,"API_EVN" ,"\"APIRELEASE\""
+        }
+
+        applicationVariants.all {
+            variant ->
+                variant.outputs.each { output ->
+                    output.outputFile = new File(
+                            output.outputFile.parent,
+                            output.outputFile.name.replace(output.outputFile.name, variant.productFlavors[0].name + "${variant.versionName}.apk"))
+                }
         }
 
     }

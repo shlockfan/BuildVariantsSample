@@ -68,6 +68,19 @@ productFlavors {
         }
     }
 ```
+
+#####4.定义打包生成的文件名
+```
+ applicationVariants.all {
+            variant ->
+                variant.outputs.each { output ->
+                    output.outputFile = new File(
+                            output.outputFile.parent,
+                            output.outputFile.name.replace(output.outputFile.name, variant.productFlavors[0].name + "${variant.versionName}.apk"))
+                }
+        }
+```
+
 #####最后测试meta标签和其它配置在不同版本打包时是否生效
 ```
   try {
